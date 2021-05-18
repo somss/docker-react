@@ -9,3 +9,13 @@ before_install:
 
 script:
   - docker run -e CI=true somuy/docker-react yarn test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "reactapp"
+  env: "Reactapp-env"
+  bucket_name: "elasticbeanstalk-us-east-2-579671076201"
+  bucket_path: "reactapp"
+  on:
+    branch: master
